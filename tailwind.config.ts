@@ -13,6 +13,7 @@ const config: Config = {
       },
       gridTemplateRows: {
         app: 'min-content max-content',
+        homeLoading: 'repeat(6, 7vw)',
       },
     },
   },
