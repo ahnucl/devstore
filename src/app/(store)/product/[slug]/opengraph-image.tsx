@@ -5,11 +5,10 @@ import Image from 'next/image'
 import { ImageResponse } from 'next/og'
 import colors from 'tailwindcss/colors'
 
-// Route segment config
 export const runtime = 'edge'
 
-// Image metadata
 export const alt = ''
+
 export const size = {
   width: 1200,
   height: 630,
@@ -17,8 +16,8 @@ export const size = {
 
 export const contentType = 'image/png'
 
-async function getProducts(slug: string): Promise<Product> {
-  const response = await api(`products/${slug}`, {
+async function getProduct(slug: string): Promise<Product> {
+  const response = await api(`/products/${slug}`, {
     next: {
       revalidate: 60 * 60, // 1 hour
     },
@@ -35,7 +34,7 @@ export default async function OgImage({
 }: {
   params: { slug: string }
 }) {
-  const product = await getProducts(params.slug)
+  const product = await getProduct(params.slug)
 
   const productImageUrl = new URL(product.image, env.APP_URL).toString()
 
