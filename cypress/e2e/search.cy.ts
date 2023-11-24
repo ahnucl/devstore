@@ -10,7 +10,7 @@ describe('search products', () => {
     cy.get('a[href^="/product"]').should('exist')
   })
 
-  it('should not be able to visti search page without search query', () => {
+  it('should not be able to visit search page without search query', () => {
     cy.on('uncaught:exception', () => {
       return false
     })
